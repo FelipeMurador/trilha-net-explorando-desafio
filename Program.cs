@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System.Diagnostics.Contracts;
+using System.Text;
 using DesafioProjetoHospedagem.Models;
+
 
 Console.OutputEncoding = Encoding.UTF8;
 
@@ -9,14 +11,25 @@ List<Pessoa> hospedes = new List<Pessoa>();
 Pessoa p1 = new Pessoa(nome: "Hóspede 1");
 Pessoa p2 = new Pessoa(nome: "Hóspede 2");
 
+int contador =0;
+
+
 hospedes.Add(p1);
 hospedes.Add(p2);
 
+
+foreach (var hospede in hospedes)
+            {
+            Console.WriteLine($"Hóspede {contador}: {hospede}");
+            contador++;
+             
+            }
+Console.WriteLine($"O hotel tem {contador} hospedes");
 // Cria a suíte
 Suite suite = new Suite(tipoSuite: "Premium", capacidade: 2, valorDiaria: 30);
 
 // Cria uma nova reserva, passando a suíte e os hóspedes
-Reserva reserva = new Reserva(diasReservados: 5);
+Reserva reserva = new Reserva(diasReservados: 20);
 reserva.CadastrarSuite(suite);
 reserva.CadastrarHospedes(hospedes);
 
